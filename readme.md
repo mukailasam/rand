@@ -1,5 +1,9 @@
 # Rand
-A Command-Line tool for generating a cryptographically secure random bytes.
+A Command-Line tool for generating a cryptographically secure random bytes.<br><br>
+
+
+
+![Image](IMG-20240318-WA0014.jpg)
 
 ### Install
 git clone https://github.com/mukailasam/rand<br>
