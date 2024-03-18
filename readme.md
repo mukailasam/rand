@@ -6,7 +6,6 @@ A Command-Line tool for generating a cryptographically secure random bytes.
 - git clone https://github.com/mukailasam/rand
 - cd rand
 - go install
-
 `
 
 ### Run
