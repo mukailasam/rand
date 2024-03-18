@@ -2,11 +2,9 @@
 A Command-Line tool for generating a cryptographically secure random bytes.
 
 ### Install
-`
-- git clone https://github.com/mukailasam/rand
-- cd rand
-- go install
-`
+git clone https://github.com/mukailasam/rand<br>
+cd rand<br>
+go install
 
 ### Run
 `rand`
