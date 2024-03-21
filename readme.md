@@ -1,38 +1,37 @@
 # Rand
-A Command-Line tool for generating a cryptographically secure random bytes.<br><br>
+
+A Command-Line tool for generating a cryptographically secure random bytes.
 
 
-
-![Image](IMG-20240318-WA0014.jpg)
+![Image](screenshot.png)
+---
 
 ### Install
-git clone https://github.com/mukailasam/rand<br>
-cd rand<br>
-go install
 
-### Run
-`rand`
+Install it from the sources:
+```bash
+git clone https://github.com/mukailasam/rand
+cd rand
+go install
+```
+
+Install it from the repository:
+```bash
+go install github.com/mukailasam/rand
+```
 
 ### Usage
 
-**Write to Console**
-- rand -n 16
-- rand -n 32
-- rand -n 64
-- rand -n 128
-- rand -n 256
+Please note that the script can only generates between 16 and 100000 bytes.
+The default value is 32 bytes and the output will be in hexadecimal format.
 
-**Write to a File**
-- rand -n 16 -o rand.txt
-- rand -n 1024 -o rand.txt
-- rand -n 2048 -o rand.txt
-- rand -n 4096 -o rand.txt
+Write to the console:
+```bash
+rand -n <numberOfBytes>
+```
 
-### Note
-- By default 32 bytes will be the number of output bytes if the number of bytes is not specify
-e.g
-rand
+Write to a file:
+```bash
+rand -n <numberOfBytes> -o <file>
+```
 
-- Generated random bytes ouput is in hexadecimal form
-
-- Number of bytes argument can be of any size in this range[16-100001]
