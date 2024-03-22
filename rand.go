@@ -3,22 +3,20 @@ package main
 import (
 	"crypto/rand"
 	"encoding/hex"
-	"fmt"
 	"os"
 	"strings"
 )
 
 type RandStrct struct {
-	NumberofBytes int    // number of bytes
+	NumberOfBytes int
 	FileFlagSet   bool   // set true to write output to file
 	FileName      string // output filename
 }
 
-func RandomBytes(r *RandStrct) (int, error) {
-	byt := make([]byte, r.NumberofBytes)
-	n, err := rand.Read(byt)
-	if err != nil {
-		return 0, err
+func RandomBytes(r *RandStrct) (string, error) {
+	byt := make([]byte, r.NumberOfBytes)
+	if _, err := rand.Read(byt); err != nil {
+		return "", err
 	}
 
 	output := hex.EncodeToString(byt)
@@ -27,16 +25,15 @@ func RandomBytes(r *RandStrct) (int, error) {
 	if r.FileFlagSet {
 		f, err := os.OpenFile(r.FileName, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
 		if err != nil {
-			return 0, err
+			return "", err
 		}
-		n, err = f.WriteString(result)
-		if err != nil {
-			return 0, err
+
+		if _, err := f.WriteString(result); err != nil {
+			return "", err
 		}
-		return n, nil
+
+		return result, nil
 	}
 
-	fmt.Println("Ouput👇\n", result)
-
-	return n, nil
+	return result, nil
 }

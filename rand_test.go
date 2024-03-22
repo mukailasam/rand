@@ -2,19 +2,32 @@ package main
 
 import "testing"
 
-func TestRand(t *testing.T) {
-	input := 16
-	leastexpectedOutput := 16
-	mostExpectedout := 100000
+func TestRandomBytes(t *testing.T) {
+	t.Parallel()
 
-	r := &RandStrct{}
-	r.NumberofBytes = input
+	t.Run("it should generate 16 bytes", func(t *testing.T) {
+		t.Parallel()
 
-	rval, _ := RandomBytes(r)
-	if rval < leastexpectedOutput {
-		t.Fatal("Testing failed...")
-	} else if rval > mostExpectedout {
-		t.Fatal("Testing failed...")
-	}
+		generatedBytes, err := RandomBytes(&RandStrct{NumberOfBytes: 16})
+		if err != nil {
+			t.Fatalf("RandomBytes returned an error: %s", err)
+		}
 
+		if len(generatedBytes) != 32 {
+			t.Fatalf("number of bytes does not match the requested number: %d instead of %d", len(generatedBytes)/2, 16)
+		}
+	})
+
+	t.Run("it should generate 100000 bytes", func(t *testing.T) {
+		t.Parallel()
+
+		generatedBytes, err := RandomBytes(&RandStrct{NumberOfBytes: 100000})
+		if err != nil {
+			t.Fatalf("RandomBytes returned an error: %s", err)
+		}
+
+		if len(generatedBytes) != 200000 {
+			t.Fatalf("number of bytes does not match the requested number: %d instead of %d", len(generatedBytes)/2, 100000)
+		}
+	})
 }
